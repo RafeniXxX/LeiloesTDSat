@@ -1,3 +1,4 @@
+// TESTE GIT
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -35,8 +36,20 @@ public class ProdutosDAO {
         return listagem;
     }
     
-    
-    
-        
-}
+   public void venderProduto(int idProduto) {
 
+    String sql = "UPDATE produtos SET status = 'Vendido' WHERE id = ?";
+
+    try {
+        conn = new conectaDAO().connectDB();
+        prep = conn.prepareStatement(sql);
+
+        prep.setInt(1, idProduto);
+        prep.executeUpdate();
+
+    } catch (Exception erro) {
+        JOptionPane.showMessageDialog(null, erro);
+    }
+}
+ 
+    
